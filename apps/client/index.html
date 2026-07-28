@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+    <meta name="theme-color" content="#101820" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="/assets/app-icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/app-icon.svg" />
+    <title>Всё под контролем!</title>
+  </head>
+  <body data-scene="boot">
+    <main id="app">
+      <div id="game-root" aria-label="Игровое поле"></div>
+      <button id="install-button" type="button" hidden>Установить игру</button>
+      <div id="game-status" class="sr-only" aria-live="polite">Загрузка игры</div>
+      <section id="portrait-warning" aria-label="Требуется альбомная ориентация">
+        <div class="phone-icon" aria-hidden="true">↻</div>
+        <h1>Поверните устройство</h1>
+        <p>Рабочая смена проходит в альбомной ориентации.</p>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

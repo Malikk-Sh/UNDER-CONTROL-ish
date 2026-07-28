@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 720">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#172a36"/><stop offset="1" stop-color="#0b141c"/>
+    </linearGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0v80" fill="none" stroke="#38505d" stroke-width="2" opacity=".26"/>
+      <circle cx="8" cy="8" r="3" fill="#54707c" opacity=".35"/>
+    </pattern>
+    <pattern id="stripe" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="24" height="48" fill="#ffb000"/><rect x="24" width="24" height="48" fill="#17212a"/>
+    </pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="2400" height="720" fill="url(#wall)"/>
+  <rect width="2400" height="720" fill="url(#grid)"/>
+  <g opacity=".5" fill="none" stroke="#294654" stroke-width="22">
+    <path d="M-30 150h300v120h420V80h420v140h380V90h510v150h500"/>
+    <path d="M80 590V340h470v180h510V310h580v210h580V300h330"/>
+  </g>
+  <g fill="#11232e" stroke="#405a67" stroke-width="7">
+    <rect x="80" y="102" width="260" height="145" rx="18"/>
+    <rect x="690" y="68" width="310" height="160" rx="18"/>
+    <rect x="1510" y="90" width="330" height="150" rx="18"/>
+    <rect x="2040" y="118" width="260" height="132" rx="18"/>
+  </g>
+  <g fill="#33e6d1" filter="url(#glow)">
+    <circle cx="132" cy="154" r="10"/><circle cx="164" cy="154" r="10"/>
+    <rect x="728" y="110" width="92" height="16" rx="8"/>
+    <rect x="1550" y="132" width="120" height="14" rx="7"/>
+    <circle cx="2085" cy="163" r="10"/>
+  </g>
+  <g opacity=".8">
+    <rect x="0" y="625" width="2400" height="24" fill="url(#stripe)"/>
+    <rect x="0" y="649" width="2400" height="71" fill="#091117"/>
+    <path d="M0 673h2400" stroke="#314550" stroke-width="3" stroke-dasharray="20 24"/>
+  </g>
+  <g font-family="Arial,sans-serif" font-weight="700" fill="#91a6ae" opacity=".3">
+    <text x="105" y="212" font-size="36">SECTOR 01</text>
+    <text x="718" y="192" font-size="34">НЕ ТРЯСТИ</text>
+    <text x="1540" y="204" font-size="34">ВЫХОД →</text>
+  </g>
+</svg>

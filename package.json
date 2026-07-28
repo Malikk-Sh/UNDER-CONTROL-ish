@@ -1,0 +1,38 @@
+{
+  "name": "under-control-ish",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tools/*"
+  ],
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace @under-control/client",
+    "build": "npm run build --workspace @under-control/client",
+    "preview": "npm run preview --workspace @under-control/client",
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "validate:content": "npm run validate --workspace @under-control/level-validator",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "verify": "npm run lint && npm run typecheck && npm run validate:content && npm run test && npm run build",
+    "verify:full": "npm run verify && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.0",
+    "eslint": "^9.39.0",
+    "globals": "^16.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "vitest": "^4.0.0"
+  }
+}

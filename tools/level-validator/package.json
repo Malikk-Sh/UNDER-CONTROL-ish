@@ -1,0 +1,13 @@
+{
+  "name": "@under-control/level-validator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@under-control/shared": "0.1.0"
+  }
+}
