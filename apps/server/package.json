@@ -1,0 +1,23 @@
+{
+  "name": "@uc/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Авторитетный игровой сервер на Colyseus",
+  "//": "--tsconfig обязателен: без него tsx может подобрать конфиг без useDefineForClassFields:false, и поля @colyseus/schema перестанут отслеживать изменения.",
+  "scripts": {
+    "dev": "tsx watch --tsconfig ./tsconfig.json src/index.ts",
+    "start": "tsx --tsconfig ./tsconfig.json src/index.ts"
+  },
+  "dependencies": {
+    "@colyseus/schema": "^3.0.76",
+    "@colyseus/ws-transport": "^0.16.5",
+    "@uc/shared": "*",
+    "colyseus": "^0.16.5",
+    "express": "^4.21.2",
+    "tsx": "^4.23.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
+  }
+}

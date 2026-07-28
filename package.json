@@ -1,0 +1,34 @@
+{
+  "name": "under-control-ish",
+  "version": "0.1.0",
+  "private": true,
+  "description": "«Всё под контролем!» — кооперативный 2D-платформер для веба и мобильных устройств",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "workspaces": [
+    "packages/shared",
+    "packages/tools",
+    "apps/server",
+    "apps/client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev --workspace @uc/server",
+    "dev:client": "npm run dev --workspace @uc/client",
+    "build": "npm run build --workspace @uc/client",
+    "start": "npm run start --workspace @uc/server",
+    "typecheck": "tsc -b --pretty",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate:levels": "npm run validate --workspace @uc/tools"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "concurrently": "^9.1.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}

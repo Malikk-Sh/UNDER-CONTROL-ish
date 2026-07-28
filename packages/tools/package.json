@@ -1,0 +1,20 @@
+{
+  "name": "@uc/tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Инструменты разработки: валидатор уровней и инспектор реплеев",
+  "scripts": {
+    "validate": "tsx --tsconfig ./tsconfig.json src/cli-validate.ts",
+    "smoke": "tsx --tsconfig ./tsconfig.json src/cli-smoke.ts",
+    "replay": "tsx --tsconfig ./tsconfig.json src/cli-replay.ts"
+  },
+  "dependencies": {
+    "@uc/shared": "*",
+    "colyseus.js": "^0.16.22"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.0",
+    "tsx": "^4.23.1"
+  }
+}

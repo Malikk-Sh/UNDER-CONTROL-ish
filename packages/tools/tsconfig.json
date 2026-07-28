@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    // DOM нужен браузерному дымовому тесту: код внутри page.evaluate()
+    // исполняется в странице, хотя и живёт в node-скрипте.
+    "lib": ["ES2022", "DOM"],
+    "types": ["node"],
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "noEmit": false,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo"
+  },
+  "include": ["src/**/*.ts"],
+  "references": [{ "path": "../shared" }]
+}
