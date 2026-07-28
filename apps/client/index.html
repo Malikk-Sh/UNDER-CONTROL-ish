@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Всё под контролем!</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="description" content="Кооперативный 2D-платформер про бригаду, которая всё держит под контролем. Почти." />
+    <meta name="theme-color" content="#12161f" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Под контролем" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0d1017;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: var(--bg);
+        color: #e8eef7;
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        /* Жесты браузера не должны конкурировать с виртуальным стиком. */
+        touch-action: none;
+        overscroll-behavior: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #game {
+        width: 100%;
+        height: 100%;
+      }
+      #game canvas {
+        display: block;
+        touch-action: none;
+      }
+      #boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        gap: 14px;
+        text-align: center;
+        background: radial-gradient(circle at 50% 35%, #1b2333 0%, #0d1017 70%);
+        z-index: 10;
+        transition: opacity 0.35s ease;
+      }
+      #boot.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #boot h1 {
+        margin: 0;
+        font-size: clamp(22px, 5vw, 40px);
+        letter-spacing: 0.02em;
+      }
+      #boot p {
+        margin: 0;
+        opacity: 0.62;
+        font-size: 14px;
+      }
+      .bar {
+        width: min(260px, 70vw);
+        height: 4px;
+        border-radius: 4px;
+        background: #232c3d;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      .bar span {
+        display: block;
+        height: 100%;
+        width: 35%;
+        border-radius: 4px;
+        background: #ffc93c;
+        animation: slide 1.1s ease-in-out infinite;
+      }
+      @keyframes slide {
+        0% {
+          transform: translateX(-110%);
+        }
+        100% {
+          transform: translateX(320%);
+        }
+      }
+      #rotate {
+        position: fixed;
+        inset: 0;
+        display: none;
+        place-content: center;
+        text-align: center;
+        padding: 24px;
+        background: #0d1017;
+        z-index: 20;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+      /* Игра рассчитана на ландшафтную ориентацию (GDD §14.2). */
+      @media (max-width: 900px) and (orientation: portrait) and (pointer: coarse) {
+        #rotate {
+          display: grid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game"></div>
+    <div id="boot">
+      <h1>Всё под контролем!</h1>
+      <p>Загружаем цех и генерируем спрайты…</p>
+      <div class="bar"><span></span></div>
+    </div>
+    <div id="rotate">
+      <div>
+        <strong>Поверните устройство горизонтально</strong>
+        <p style="opacity: 0.6">Смена проходит в ландшафтной ориентации.</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

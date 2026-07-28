@@ -1,0 +1,12 @@
+{
+  "name": "@uc/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Общие правила симуляции, протокол и контент для клиента и сервера",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "//": "Solution-файл для `tsc -b`. Собственных compilerOptions здесь нет намеренно: tsx и esbuild такой файл игнорируют, поэтому рантайм-конфиг задаётся флагом --tsconfig в скриптах пакетов.",
+  "files": [],
+  "references": [
+    { "path": "./packages/shared" },
+    { "path": "./packages/tools" },
+    { "path": "./apps/server" },
+    { "path": "./apps/client" }
+  ]
+}

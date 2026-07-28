@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  check:
+    name: Проверки
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Установка зависимостей
+        run: npm ci
+
+      - name: Проверка типов
+        run: npm run typecheck
+
+      - name: Автотесты
+        run: npm test
+
+      # Валидатор гоняет каждую комнату на составах 1/2/4/8/12 и падает,
+      # если появилась непроходимая конфигурация (GDD §18.1).
+      - name: Валидация уровней
+        run: npm run validate:levels
+
+      - name: Сборка клиента
+        run: npm run build
+
+  smoke:
+    name: Сквозной прогон
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: check
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Запуск сервера
+        run: |
+          npm start &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:2567/healthz > /dev/null && exit 0
+            sleep 1
+          done
+          echo "сервер не поднялся"
+          exit 1
+
+      - name: Боты по сети
+        run: npm run smoke -w @uc/tools -- ws://localhost:2567 3 5

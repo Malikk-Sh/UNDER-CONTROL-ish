@@ -1,0 +1,40 @@
+# Blueprint для render.com.
+#
+# Один web service делает всё: собирает клиент Vite и поднимает Colyseus,
+# который раздаёт статику и принимает WebSocket на том же порту $PORT.
+# Отдельный static site не нужен и даже вреден — игровой сокет должен жить
+# на том же origin, иначе понадобится CORS и второй домен.
+#
+# Как задеплоить:
+#   1. Render → New → Blueprint → указать этот репозиторий.
+#   2. Render прочитает render.yaml и создаст сервис.
+#   3. После первого деплоя игра доступна по адресу сервиса.
+
+services:
+  - type: web
+    name: under-control-ish
+    runtime: node
+    plan: free
+    region: frankfurt
+    branch: main
+
+    # --include=dev обязателен: Vite и TypeScript лежат в devDependencies, а
+    # render.com выставляет NODE_ENV=production, из-за чего npm ci по умолчанию
+    # их пропустит и сборка клиента упадёт.
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+
+    healthCheckPath: /healthz
+    autoDeploy: true
+
+    envVars:
+      - key: NODE_VERSION
+        value: "22.11.0"
+      # Порт задаёт сама платформа; сервер читает process.env.PORT.
+      - key: NODE_ENV
+        value: production
+
+    # Симуляция идёт фиксированным тиком 30 Гц в одном процессе, поэтому
+    # горизонтальное масштабирование потребует общего presence-слоя (Redis).
+    # Для первой версии это осознанно один инстанс.
+    numInstances: 1
