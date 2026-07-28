@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#172633"/><stop offset="1" stop-color="#081017"/>
+    </linearGradient>
+    <linearGradient id="battery" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#5af4df"/><stop offset="1" stop-color="#16ae9e"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path d="M0 385 127 512H0z" fill="#ff3d71" opacity=".9"/>
+  <path d="M512 0v117L395 0z" fill="#ffb000"/>
+  <g transform="translate(76 91)">
+    <path d="M78 61c8-40 39-61 102-61s94 21 102 61" fill="#ffb000"/>
+    <rect x="53" y="54" width="254" height="58" rx="26" fill="#f7c844"/>
+    <rect x="79" y="99" width="202" height="188" rx="86" fill="#eff4f7"/>
+    <rect x="109" y="130" width="142" height="82" rx="37" fill="#19313e"/>
+    <circle cx="148" cy="170" r="15" fill="#5af4df"/>
+    <circle cx="212" cy="170" r="15" fill="#5af4df"/>
+    <rect x="94" y="237" width="172" height="98" rx="32" fill="#ff6a3d"/>
+    <rect x="126" y="259" width="108" height="52" rx="12" fill="url(#battery)" stroke="#10212b" stroke-width="12"/>
+    <path d="m165 265-21 28h27l-9 16 36-35h-25l9-9z" fill="#fff7b2"/>
+  </g>
+</svg>

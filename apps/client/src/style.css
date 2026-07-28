@@ -1,0 +1,89 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-rounded, "Segoe UI", system-ui, sans-serif;
+  background: #071017;
+  color: #f4f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+html,
+body,
+#app,
+#game-root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+  background: #071017;
+}
+
+body { position: fixed; inset: 0; user-select: none; -webkit-user-select: none; }
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+#install-button {
+  position: fixed;
+  z-index: 30;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  border: 1px solid #5af4df;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: rgb(10 24 32 / 88%);
+  color: #dffffb;
+  font: 700 14px/1 system-ui, sans-serif;
+  box-shadow: 0 0 24px rgb(51 230 209 / 18%);
+}
+
+#portrait-warning {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 32px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 35%, #1c3441, #071017 68%);
+}
+
+#portrait-warning h1 { margin: 6px 0 0; color: #ffcc4d; }
+#portrait-warning p { max-width: 290px; margin: 0; color: #a9bec8; }
+.phone-icon { font-size: 64px; color: #5af4df; animation: rotate-phone 1.5s ease-in-out infinite; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes rotate-phone {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(80deg); }
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+  #portrait-warning { display: grid; }
+  #game-root { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-icon { animation: none; }
+}

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: under-control-ish
+    runtime: static
+    plan: free
+    buildCommand: npm ci && npm run verify && npm run build
+    staticPublishPath: ./apps/client/dist
+    autoDeployTrigger: off
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
