@@ -1,9 +1,16 @@
 name: CI
 
 on:
+  # Ветки проверяются через pull_request, поэтому push слушаем только на main:
+  # иначе каждый коммит в открытой ветке запускал бы CI дважды.
   push:
-    branches: ['**']
+    branches: [main]
   pull_request:
+
+# Новый коммит отменяет незавершённый прогон по той же ветке.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   check:
